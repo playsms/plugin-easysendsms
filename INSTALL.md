@@ -1,6 +1,6 @@
 # Installation
 
-You will need a working playSMS. Assumed playSMS is installed with these setups:
+You will need an installed and working playSMS, and assumed your playSMS is installed with these setups:
 
 - Your playSMS web files is in `/var/www/html/playsms`
 - Your playSMS database is `playsms`
