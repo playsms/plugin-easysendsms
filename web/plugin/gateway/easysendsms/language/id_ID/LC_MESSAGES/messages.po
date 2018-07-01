@@ -1,6 +1,9 @@
 msgid "All mandatory fields must be filled"
 msgstr ""
 
+msgid "Easy Send SMS URL"
+msgstr ""
+
 msgid "Eg: +0700 for Jakarta/Bangkok timezone"
 msgstr ""
 
@@ -38,7 +41,4 @@ msgid "Save"
 msgstr ""
 
 msgid "User"
-msgstr ""
-
-msgid "Easy Send SMS URL"
 msgstr ""
