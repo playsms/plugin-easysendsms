@@ -32,19 +32,21 @@ switch (_OP_) {
 				'DIALOG_DISPLAY' => _dialog(),
 				'Manage easysendsms' => _('Manage easysendsms'),
 				'Gateway name' => _('Gateway name'),
-				'Easy Send SMS URL' => _mandatory(_('Easy Send SMS URL')),
+				/* 'Easy Send SMS URL' => _mandatory(_('Easy Send SMS URL')), */
 				'User' => _('User'),
 				'Password' => _('Password'),
 				'Module sender ID' => _('Module sender ID'),
 				'Module timezone' => _('Module timezone'),
 				'Save' => _('Save'),
 				'Notes' => _('Notes'),
+				'Your callback URL is' => _('Your callback URL is'),
+				'CALLBACK_URL' => _HTTP_PATH_PLUG_ . '/gateway/easysendsms/callback.php',
 				'HINT_FILL_PASSWORD' => _hint(_('Fill to change the Password')),
 				'HINT_MODULE_SENDER' => _hint(_('Max. 16 numeric or 11 alphanumeric char. empty to disable')),
 				'HINT_TIMEZONE' => _hint(_('Eg: +0700 for Jakarta/Bangkok timezone')),
 				'BUTTON_BACK' => _back('index.php?app=main&inc=core_gateway&op=gateway_list'),
 				'status_active' => $status_active,
-				'easysendsms_param_url' => $plugin_config['easysendsms']['url'],
+				/* 'easysendsms_param_url' => $plugin_config['easysendsms']['url'], */
 				'easysendsms_param_user' => $plugin_config['easysendsms']['user'],
 				'easysendsms_param_module_sender' => $plugin_config['easysendsms']['module_sender'],
 				'easysendsms_param_datetime_timezone' => $plugin_config['easysendsms']['datetime_timezone'] 
@@ -54,7 +56,8 @@ switch (_OP_) {
 		break;
 	
 	case "manage_save":
-		$up_url = ($_REQUEST['up_url'] ? $_REQUEST['up_url'] : $plugin_config['easysendsms']['default_url']);
+		//$up_url = ($_REQUEST['up_url'] ? $_REQUEST['up_url'] : $plugin_config['easysendsms']['default_url']);
+		$up_url = $plugin_config['easysendsms']['url'];
 		$up_user = $_REQUEST['up_user'];
 		$up_password = $_REQUEST['up_password'];
 		$up_module_sender = $_REQUEST['up_module_sender'];
