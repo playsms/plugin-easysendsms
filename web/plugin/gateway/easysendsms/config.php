@@ -5,9 +5,7 @@ $data = registry_search(0, 'gateway', 'easysendsms');
 $plugin_config['easysendsms'] = $data['gateway']['easysendsms'];
 $plugin_config['easysendsms']['name'] = 'easysendsms';
 $plugin_config['easysendsms']['default_url'] = 'https://www.easysendsms.com/sms/bulksms-api/bulksms-api';
-if (!trim($plugin_config['easysendsms']['url'])) {
-	$plugin_config['easysendsms']['url'] = $plugin_config['easysendsms']['default_url'];
-}
+$plugin_config['easysendsms']['url'] = ( $plugin_config['easysendsms']['url'] ? $plugin_config['easysendsms']['url'] : $plugin_config['easysendsms']['default_url'] );
 
 // smsc configuration
 $plugin_config['easysendsms']['_smsc_config_'] = array(
