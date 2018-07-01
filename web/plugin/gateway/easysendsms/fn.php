@@ -68,7 +68,7 @@ function easysendsms_hook_sendsms($smsc, $sms_sender, $sms_footer, $sms_to, $sms
 		}
 		
 		// https://www.easysendsms.com/sms/bulksms-api/bulksms-api?username=testuser&password=secret&from=Test&to=12345678910&text=Hello%20world&type=0
-		$url = $plugin_config['easysendsms']['url'];
+		$url = $plugin_config['easysendsms']['url'] . "?";
 		$url .= "username=" . $plugin_config['easysendsms']['user'];
 		$url .= "&password=" . $plugin_config['easysendsms']['password'];
 		$url .= "&to=" . urlencode($sms_to);
@@ -95,6 +95,8 @@ function easysendsms_hook_sendsms($smsc, $sms_sender, $sms_footer, $sms_to, $sms
 		
 			if (strtolower($c_response[0] == 'error')) {
 				$c_error_code = $c_response[1];
+			} else if ((int) $c_response[0]) {
+				$c_error_code = (int) $c_response[0];
 			}
 		}
 		
