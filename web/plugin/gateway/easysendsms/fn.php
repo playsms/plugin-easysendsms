@@ -71,6 +71,7 @@ function easysendsms_hook_sendsms($smsc, $sms_sender, $sms_footer, $sms_to, $sms
 		$url = $plugin_config['easysendsms']['url'] . "?";
 		$url .= "username=" . $plugin_config['easysendsms']['user'];
 		$url .= "&password=" . $plugin_config['easysendsms']['password'];
+		$url .= "&from=" . urlencode($sms_sender);
 		$url .= "&to=" . urlencode($sms_to);
 		$url .= "&text=" . urlencode($sms_msg);
 		$url .= "&tipe=" . $c_sms_type;
