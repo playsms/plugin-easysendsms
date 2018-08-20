@@ -74,7 +74,7 @@ function easysendsms_hook_sendsms($smsc, $sms_sender, $sms_footer, $sms_to, $sms
 		$url .= "&from=" . urlencode($sms_sender);
 		$url .= "&to=" . urlencode($sms_to);
 		$url .= "&text=" . urlencode($sms_msg);
-		$url .= "&tipe=" . $c_sms_type;
+		$url .= "&type=" . $c_sms_type;
 		$url = trim($url);
 		
 		_log("send url:[" . $url . "]", 3, "easysendsms_hook_sendsms");
@@ -90,7 +90,7 @@ function easysendsms_hook_sendsms($smsc, $sms_sender, $sms_footer, $sms_to, $sms
 		if ($response) {
 			$c_response = explode(':', $response);
 			
-			if (strtolower($c_response[0] == 'ok')) {
+			if (strtolower($c_response[0]) == 'ok') {
 				$c_message_id = $c_response[1];
 			}
 		
