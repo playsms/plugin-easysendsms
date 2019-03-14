@@ -79,6 +79,8 @@ function easysendsms_hook_sendsms($smsc, $sms_sender, $sms_footer, $sms_to, $sms
 		
 		_log("send url:[" . $url . "]", 3, "easysendsms_hook_sendsms");
 		
+		$c_message_id = 0;
+		
 		// send it
 		$response = file_get_contents($url);
 		
@@ -86,15 +88,14 @@ function easysendsms_hook_sendsms($smsc, $sms_sender, $sms_footer, $sms_to, $sms
 		 * OK:1234567891011
 		 * ERROR:1001
 		 */
-		
 		if ($response) {
 			$c_response = explode(':', $response);
 			
-			if (strtolower($c_response[0] == 'ok')) {
+			if (strtolower($c_response[0]) == 'ok') {
 				$c_message_id = $c_response[1];
 			}
 		
-			if (strtolower($c_response[0] == 'error')) {
+			if (strtolower($c_response[0]) == 'error') {
 				$c_error_code = $c_response[1];
 			} else if ((int) $c_response[0]) {
 				$c_error_code = (int) $c_response[0];
@@ -116,8 +117,7 @@ function easysendsms_hook_sendsms($smsc, $sms_sender, $sms_footer, $sms_to, $sms
 		} else if ($c_error_code) {
 			_log("failed smslog_id:" . $smslog_id . " message_id:" . $c_message_id . " error_code:" . $c_error_code . " smsc:" . $smsc, 2, "easysendsms_hook_sendsms");
 		} else {
-			$resp = $response;
-			_log("invalid smslog_id:" . $smslog_id . " resp:[" . $resp . "] smsc:" . $smsc, 2, "easysendsms_hook_sendsms");
+			_log("invalid smslog_id:" . $smslog_id . " resp:[" . $response . "] smsc:" . $smsc, 2, "easysendsms_hook_sendsms");
 		}
 	}
 	if (!$ok) {
